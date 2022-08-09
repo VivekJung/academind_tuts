@@ -1,3 +1,4 @@
+import 'package:academind/widgets/quiz_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,18 +19,17 @@ class QuizWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Question(
-              questions: questionIndex < questions.length
-                  ? questions[questionIndex]['question']
-                      as String // (or you can convert this .toString())
-                  : "Wohoo!! It's complete"),
-          const SizedBox(height: 20),
-          questionIndex < questions.length
-              ? Column(
+    return questionIndex < questions.length
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+                Question(
+                    questions: questions[questionIndex]['question']
+                        as String // (or you can convert this .toString())
+                    ),
+                const SizedBox(height: 20),
+                Column(
                   children: [
                     ...(questions[questionIndex]['answers'] as List<String>)
                         .map((answer) {
@@ -37,7 +37,7 @@ class QuizWidget extends StatelessWidget {
                     }).toList(),
                   ],
                 )
-              : const Text("Result :..."),
-        ]);
+              ])
+        : const ResultWidget();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:academind/screens/dash_board_screen.dart';
+import 'package:academind/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
