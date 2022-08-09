@@ -1,14 +1,26 @@
 const questionsList = [
   {
-    "question": "Your favorite destination?",
-    "answers": ["Himal", "Pahad", "Terai"],
+    "question": "Your favorite region?",
+    "answers": [
+      {"option": "Himal", "point": -1},
+      {"option": "Paahad", "point": 0},
+      {"option": "Terai", "point": 1},
+    ],
   },
   {
     "question": "Your favorite food?",
-    "answers": ["salad", "paratha", "momo"],
+    "answers": [
+      {"option": "Ghungi", "point": 1},
+      {"option": "Moong dal", "point": 0},
+      {"option": "Kodo", "point": -1},
+    ],
   },
   {
     "question": "Your favorite tree?",
-    "answers": ["Peepal", "Banyan", "Coconut"],
+    "answers": [
+      {"option": "Uttis", "point": 0},
+      {"option": "FirFiray", "point": -1},
+      {"option": "Saal", "point": 1},
+    ],
   },
 ];

@@ -10,8 +10,12 @@ class Answer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(onPressed: selectAnswer, child: Text(answer))),
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: selectAnswer,
+          child: Text(answer),
+        ),
+      ),
     );
   }
 }

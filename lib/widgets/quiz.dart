@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:academind/widgets/quiz_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -14,30 +16,32 @@ class QuizWidget extends StatelessWidget {
     required this.getAnswer,
   }) : super(key: key);
   final List<Map<String, Object>> questions;
-  final VoidCallback getAnswer;
+  final Function getAnswer;
   final int questionIndex;
 
   @override
   Widget build(BuildContext context) {
-    return questionIndex < questions.length
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Question(
+              questions: questions[questionIndex]['question']
+                  as String // (or you can convert this .toString())
+              ),
+          const SizedBox(height: 20),
+          Column(
             children: [
-                Question(
-                    questions: questions[questionIndex]['question']
-                        as String // (or you can convert this .toString())
-                    ),
-                const SizedBox(height: 20),
-                Column(
-                  children: [
-                    ...(questions[questionIndex]['answers'] as List<String>)
-                        .map((answer) {
-                      return Answer(getAnswer, answer);
-                    }).toList(),
-                  ],
-                )
-              ])
-        : const ResultWidget();
+              ...(questions[questionIndex]['answers']
+                      as List<Map<String, Object>>)
+                  .map((answer) {
+                return Answer(
+                  () => getAnswer(answer['point']! as int),
+                  answer['option']! as String,
+                );
+              }).toList(),
+            ],
+          )
+        ]);
   }
 }
