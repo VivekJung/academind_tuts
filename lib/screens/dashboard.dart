@@ -4,9 +4,6 @@ import 'package:academind/widgets/quiz.dart';
 import 'package:academind/widgets/quiz_result.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/answers/build_answer_widget.dart';
-import '../widgets/questions/build_question_widget.dart';
-
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
 
@@ -19,6 +16,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   var _questionIndex = 0;
   final _questions = questionsList;
   var _totalPoint = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalPoint = 0;
+    });
+  }
 
   _getAnswer(int point) {
     _totalPoint += point;
@@ -43,7 +47,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 questionIndex: _questionIndex,
                 questions: _questions,
                 getAnswer: _getAnswer)
-            : ResultWidget(totalPoint: _totalPoint),
+            : ResultWidget(
+                totalPoint: _totalPoint, resetQuizHandler: () => _resetQuiz()),
       ),
     );
   }

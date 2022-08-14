@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:academind/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("038 complete... now restarting the app ");
     return const MaterialApp(
       color: Colors.black,
       home: DashBoardScreen(),

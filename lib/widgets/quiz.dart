@@ -1,9 +1,4 @@
-import 'dart:developer';
-
-import 'package:academind/widgets/quiz_result.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'answers/build_answer_widget.dart';
 import 'questions/build_question_widget.dart';
@@ -37,7 +32,7 @@ class QuizWidget extends StatelessWidget {
                   .map((answer) {
                 return Answer(
                   () => getAnswer(answer['point']! as int),
-                  answer['option']! as String,
+                  (answer['option']! as String),
                 );
               }).toList(),
             ],
